@@ -1,0 +1,29 @@
+{
+    // https://stackoverflow.com/questions/29972396/how-to-set-tab-space-style
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+
+    "files.exclude": {
+        ".vscode": true,
+
+        "node_modules/": true,
+        "npm-debug.log": true,
+        "e2e": true,
+        "README.md": true,
+
+        "src/app/**/*.map": true,  
+        "src/karma.conf.js": true,
+        "src/test.ts": true,
+        "src/tsconfig.spec.json": true,
+        "src/app/**/*.spec.ts": true,
+        "src/**/*.gitkeep": true
+    },
+
+    // https://github.com/Microsoft/vscode/issues/45071
+    "javascript.implicitProjectConfig.experimentalDecorators": true,
+
+    // https://github.com/csscomb/csscomb.js/blob/dev/doc/options.md#sort-order
+    "csscomb.formatOnSave": true
+   
+}
