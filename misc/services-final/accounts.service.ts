@@ -2,6 +2,11 @@ import { EventEmitter, Injectable } from '@angular/core';
 
 import { LoggingService } from './logging.service';
 
+/* The reason we have @Injectable() here is because we want to be able
+to inject stuff in our AccountsService. This is already taken care
+of in Components and directives with @Component() and @Directive(), it
+needs to have a metadata like components and directive. */
+
 @Injectable()
 export class AccountsService {
     accounts = [

@@ -8,16 +8,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { UsersService } from './users.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    UserComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [UsersService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        UserComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule
+    ],
+    providers: [UsersService],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
