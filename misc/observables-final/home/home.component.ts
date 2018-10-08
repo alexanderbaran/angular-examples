@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 // import { Observable } from 'rxjs/Observable';
-import { Observable, Observer, Subscription } from 'rxjs';
+import { Observable, Observer, Subscription, interval } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 // import 'rxjs/Rx';
 // import { Observer } from 'rxjs/Observer';
 // import { Subscription } from 'rxjs/Subscription';
@@ -18,11 +20,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     constructor() { }
 
     ngOnInit() {
-        const myNumbers = Observable.interval(1000)
-            .map(
-                (data: number) => {
-                    return data * 2;
-                }
+        // const myNumbers = Observable.interval(1000)
+        const myNumbers = interval(1000)
+            .pipe(
+                map(
+                    (data: number) => {
+                        return data * 2;
+                    }
+                )
             );
 
         this.numbersObsSubscription = myNumbers.subscribe(
@@ -31,21 +36,23 @@ export class HomeComponent implements OnInit, OnDestroy {
             }
         );
 
-        const myObservable = Observable.create((observer: Observer<string>) => {
-            setTimeout(() => {
-                observer.next('first package');
-            }, 2000);
-            setTimeout(() => {
-                observer.next('second package');
-            }, 4000);
-            setTimeout(() => {
-                // observer.error('this does not work');
-                observer.complete();
-            }, 5000);
-            setTimeout(() => {
-                observer.next('third package');
-            }, 6000);
-        });
+        const myObservable = Observable.create(
+            (observer: Observer<string>) => {
+                setTimeout(() => {
+                    observer.next('first package');
+                }, 2000);
+                setTimeout(() => {
+                    observer.next('second package');
+                }, 4000);
+                setTimeout(() => {
+                    // observer.error('this does not work');
+                    observer.complete();
+                }, 5000);
+                setTimeout(() => {
+                    observer.next('third package');
+                }, 6000);
+            }
+        );
 
         this.customObsSubscription = myObservable.subscribe(
             (data: string) => { console.log(data); },
