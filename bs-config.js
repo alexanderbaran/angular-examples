@@ -8,7 +8,7 @@ module.exports = {
     port: 80,
 
     server: {
-        baseDir: './dist/udemy-angular6',
+        baseDir: './dist/angular-examples',
         middleware: [
             proxy('/api/', {
                 target: 'http://localhost:8080',
