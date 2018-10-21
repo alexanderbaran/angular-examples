@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Response } from '@angular/http';
+import { HttpResponse } from '@angular/common/http';
 
 import { HttpServiceTestService } from './http-service-test.service';
 import { HttpClientTestService } from './http-client-test.service';
 
 import { User } from './user';
-import { HttpResponse } from 'selenium-webdriver/http';
+
 
 @Component({
     selector: 'app-p-http',
@@ -48,7 +48,7 @@ export class PHttpComponent implements OnInit {
 
         this.httpClientTestService.getDummyDataWithResponse()
             .subscribe(
-                (response: HttpResponse) => {
+                (response: HttpResponse<any>) => {
                     console.log(response);
                 }
             );

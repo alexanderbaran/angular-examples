@@ -4,13 +4,14 @@ import { NgModule } from '@angular/core';
 // Deprecated in favor of @angular/common/http.
 import { HttpModule } from '@angular/http';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { PHttpComponent } from './p-http.component';
 
 import { HttpService } from './http.service';
 import { HttpServiceTestService } from './http-service-test.service';
 import { HttpClientTestService } from './http-client-test.service';
+import { httpInterceptorProviders } from './http-interceptors';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { HttpClientTestService } from './http-client-test.service';
     providers: [
         HttpService,
         HttpServiceTestService,
-        HttpClientTestService
+        HttpClientTestService,
+        httpInterceptorProviders
     ],
 })
 export class PHttpModuleModule { }
