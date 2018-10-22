@@ -2,7 +2,7 @@ import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import {
     HttpInterceptor, HttpRequest, HttpEvent,
-    HttpHandler, HttpErrorResponse, HttpResponseBase
+    HttpHandler, HttpErrorResponse, HttpResponseBase, HttpResponse
 } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
@@ -33,8 +33,12 @@ export class AuthInterceptor implements HttpInterceptor {
         // HttpResponse<T> extends HttpResponseBase
         /* type HttpEvent<T> = HttpSentEvent | HttpHeaderResponse
         | HttpResponse<T> | HttpProgressEvent | HttpUserEvent<T>; */
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof
+        /* The instanceof operator tests whether the prototype property of a
+        constructor appears anywhere in the prototype chain of an object. */
         if (event instanceof HttpErrorResponse ||
-            event instanceof HttpResponseBase) {
+            event instanceof HttpResponseBase ||
+            event instanceof HttpResponse) {
             if (event.status === 401 || event.status === 403) {
                 // this.authservice.logout();
                 console.log('Logout user');
